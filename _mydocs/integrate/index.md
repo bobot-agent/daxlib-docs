@@ -4,7 +4,7 @@ title:          Integrate DAX Lib with Third-Party Tools
 menu_title:     Integrate
 published:      true
 date:           2025-08-14
-modified:       2025-08-25
+modified:       2026-10-11
 order:          /03
 next_reading:   true
 ---
@@ -13,4 +13,4 @@ next_reading:   true
 - Create packages
 - Download packages
 
-**NOTE**: Currently, the client does not add the functions to the semantic model, the external tool does that (like Tabular Editor). However, this feature will be added soon in the client before the integration with [Bravo for Power BI](https://bravo.bi).
+**NOTE**: The client does not add the functions to the semantic model. The external tool (for example, Tabular Editor) adds the functions to the model.

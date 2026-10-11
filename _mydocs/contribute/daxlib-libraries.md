@@ -4,12 +4,12 @@ title:          Contribute to DAX Lib official libraries
 menu_title:     DAX Lib libraries
 published:      true
 date:           2025-10-17
-modified:       2025-10-17
+modified:       2026-10-11
 order:          /05
 next_reading:   true
 ---
 
-> This section is a work in progress and will be completed soon.
+> This page describes the basic steps. More details will be added in a future update.
 
 To contribute to one of the official libraries maintained by the DAX Lib organization, follow these steps:
 

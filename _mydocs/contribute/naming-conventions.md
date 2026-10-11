@@ -3,8 +3,8 @@ layout:         page
 title:          Naming Conventions
 published:      true
 date:           2025-09-20
-modified:       2025-09-30
-order:          /002
+modified:       2026-10-11
+order:          /08
 next_reading:   true
 ---
 

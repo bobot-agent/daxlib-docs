@@ -4,22 +4,22 @@ title:          Contribute Medium-Large Libraries to DAX Lib
 menu_title:     Medium-Large Libraries
 published:      true
 date:           2025-10-17
-modified:       2025-10-28
+modified:       2026-10-11
 order:          /04
 next_reading:   true
 ---
 
-When your library starts to grow you might want to connect with your users with GitHub issues, collaborate with others to develop the library or Add documentation site and host (for example) on GitHub Pages. **Medium-Large** libraries allow you to have a repo dedicated to your library to do just this. Let see how to set one up.
+When your library starts to grow you might want to connect with your users with GitHub issues, collaborate with others to develop the library or Add documentation site and host (for example) on GitHub Pages. **Medium-Large** libraries allow you to have a repo dedicated to your library to do just this. This page shows how to set one up.
 
-## Create daxlib/lib-quickstart-template Template Template
+## Create a repository from the template
 
-Create `daxlib/lib-quickstart-template Template` Template:
+Create a repository from the `daxlib/lib-quickstart-template` template:
 
 <a href="https://github.com/new?template_name=lib-quickstart-template&template_owner=daxlib" class="button" target="_blank">Use daxlib/lib-quickstart-template Template</a>
     
-This creates a personal copy of the repository in your GitHub account. This repo will be dedicated to your library, and should be named after your library (i.e `Contoso/Contoso.Conversion`). If you want to have more than one Medium-Large library, simply create another repo from the template. Follow the [naming conventions](naming-conventions.md) for the library name.
+This creates a personal copy of the repository in your GitHub account. This repo will be dedicated to your library, and should be named after your library (for example, `Contoso/Contoso.Conversion`). If you want to have more than one Medium-Large library, simply create another repo from the template. Follow the [naming conventions](naming-conventions.md) for the library name.
 
-> Just like with Small libraries you will also need a fork of `daxlib/daxlib` (i.e `Contoso/daxlib`). This will be used to generate the pull request to `daxlib/daxlib`.
+> Just like with Small libraries you will also need a fork of `daxlib/daxlib` (for example, `Contoso/daxlib`). This will be used to generate the pull request to `daxlib/daxlib`.
 
 ## Add your library
 
@@ -39,7 +39,7 @@ DAX lib expects a `manifest.daxlib` and `lib/functions.tmdl` files. A `README.md
 └── README.md                     # Optional - Info on your library
 ```
 
-> You can update the `README.md` at the root of the library to give user who visit your `daxlib/lib-quickstart-template Template` fork information about the library, how to contribute or how to sumbit issues
+> You can update the `README.md` at the root of the library to give users who visit your repository information about the library, how to contribute, and how to submit issues.
 
 ### manifest.daxlib
 
@@ -47,7 +47,7 @@ DAX lib expects a `manifest.daxlib` and `lib/functions.tmdl` files. A `README.md
 
 ``` json
 {
-    "$schema": "https://raw.githubusercontent.com/sql-bi/daxlib/refs/heads/main/schemas/manifest/1.0.0/manifest.1.0.0.schema.json",
+    "$schema": "https://raw.githubusercontent.com/daxlib/daxlib/refs/heads/main/schemas/manifest/1.0.0/manifest.1.0.0.schema.json",
     "id": "Contoso.Conversion",
     "version": "0.1.0",
     "authors": "Contoso",
@@ -55,7 +55,7 @@ DAX lib expects a `manifest.daxlib` and `lib/functions.tmdl` files. A `README.md
     "tags": "DAX,UDF",
     "releaseNotes": "New functions",   // optional
     "projectUrl": "https://contoso.github.io/contoso.conversion/", // optional Docs site
-    "repositoryUrl": "https://github.com/sql-bi/daxlib/tree/main/packages/c/contoso.conversion",
+    "repositoryUrl": "https://github.com/contoso/Contoso.Conversion",
     "icon": "/icon.png",    // optional
     "readme": "/README.md"  // optional
 }
@@ -66,15 +66,19 @@ Refer to the [JSON schema](https://github.com/daxlib/daxlib/blob/main/schemas/ma
 
 *Required:* Contains TMDL definition of the functions within your library. TMDL script must *not* have `CreateOrReplace` keyword.
 
-```dax
+```tmdl
 /// Convert from Celsius(°C) to Fahrenheit(°F)
 /// @param {decimal} temperature - The temperature in Celsius
 /// @returns The temperature converted to Fahrenheit
-FUNCTION CelsiusToFahrenheit = ( temperature: DOUBLE ) =>
-        ( temperature * ( 9 / 5 ) ) + 32
+function 'Contoso.Conversion.CelsiusToFahrenheit' =
+		(
+		    temperature: DOUBLE
+		) =>
+		    ( temperature * ( 9 / 5 ) ) + 32
 
-  annotation DAXLIB_PackageId = Contoso.Conversion
-  annotation DAXLIB_PackageVersion = 0.1.0
+	annotation DAXLIB_PackageId = __PLACEHOLDER_PACKAGE_ID__
+
+	annotation DAXLIB_PackageVersion = __PLACEHOLDER_PACKAGE_VERSION__
 ...
 ```
 
@@ -87,11 +91,12 @@ There are some guidelines on DAX UDF naming conventions:
 
 #### Annotations
 
-We are able to replace the annotation values in `functions.tmdl` with placeholders. These will be overwritten by the version specified in `manifest.daxlib` when running the `publish-package.yml` workflow.
+In `functions.tmdl`, use placeholders for the annotation values. The `publish-package.yml` workflow replaces them with the `id` and `version` values from `manifest.daxlib`.
 
 ```tmdl
-annotation DAXLIB_PackageId = __PLACEHOLDER_PACKAGE_ID_
-annotation DAXLIB_PackageVersion = __PLACEHOLDER_PACKAGE_VERSION__
+	annotation DAXLIB_PackageId = __PLACEHOLDER_PACKAGE_ID__
+
+	annotation DAXLIB_PackageVersion = __PLACEHOLDER_PACKAGE_VERSION__
 ```
 
 ### icon.png
