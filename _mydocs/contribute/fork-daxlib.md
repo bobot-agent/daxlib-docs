@@ -4,7 +4,7 @@ title:          Contribute Small Libraries to DAX Lib
 menu_title:     Small Libraries
 published:      true
 date:           2025-10-17
-modified:       2025-10-28
+modified:       2026-10-11
 order:          /03
 next_reading:   true
 ---
@@ -53,7 +53,7 @@ packages/
 
 ``` json
 {
-    "$schema": "https://raw.githubusercontent.com/sql-bi/daxlib/refs/heads/main/schemas/manifest/1.0.0/manifest.1.0.0.schema.json",
+    "$schema": "https://raw.githubusercontent.com/daxlib/daxlib/refs/heads/main/schemas/manifest/1.0.0/manifest.1.0.0.schema.json",
     "id": "Contoso.Conversion",
     "version": "1.0.0",
     "authors": "Contoso",
@@ -61,7 +61,7 @@ packages/
     "tags": "DAX,UDF",
     "releaseNotes": "New functions",   // optional
     "projectUrl": "https://contoso.github.io/contoso.conversion/", // optional
-    "repositoryUrl": "https://github.com/sql-bi/daxlib/tree/main/packages/c/contoso.conversion",
+    "repositoryUrl": "https://github.com/daxlib/daxlib/tree/main/packages/c/contoso.conversion",
     "icon": "/icon.png",    // optional
     "readme": "/README.md"  // optional
 }
@@ -73,15 +73,19 @@ Refer to the [JSON schema](https://github.com/daxlib/daxlib/blob/main/schemas/ma
 
 *Required:* Contains TMDL definition of the functions within your library. TMDL script must *not* have `CreateOrReplace` keyword.
 
-```dax
+```tmdl
 /// Convert from Celsius(°C) to Fahrenheit(°F)
-/// @param {decimal} temperature – The temperature in Celsius
+/// @param {decimal} temperature - The temperature in Celsius
 /// @returns The temperature converted to Fahrenheit
-FUNCTION CelsiusToFahrenheit = ( temperature: DOUBLE ) =>
-        ( temperature * ( 9 / 5 ) ) + 32
+function 'Contoso.Conversion.CelsiusToFahrenheit' =
+		(
+		    temperature: DOUBLE
+		) =>
+		    ( temperature * ( 9 / 5 ) ) + 32
 
-  annotation DAXLIB_PackageId = Contoso.Conversion
-  annotation DAXLIB_PackageVersion = 0.1.0
+	annotation DAXLIB_PackageId = Contoso.Conversion
+
+	annotation DAXLIB_PackageVersion = 1.0.0
 ...
 ```
 
@@ -94,11 +98,15 @@ There are some guidelines on DAX UDF naming conventions:
 
 #### Annotations
 
-Functions must have the following annotations:
+Each function must have these two annotations:
+
+- `DAXLIB_PackageId`: the package name. Use the same value as `id` in `manifest.daxlib`.
+- `DAXLIB_PackageVersion`: the package version. Use the same value as `version` in `manifest.daxlib`.
 
 ```tmdl
-annotation DAXLIB_PackageId = <youraccount>/<yourlibrary>
-annotation DAXLIB_PackageVersion = x.x.x
+	annotation DAXLIB_PackageId = Contoso.Conversion
+
+	annotation DAXLIB_PackageVersion = 1.0.0
 ```
 
 ### icon.png
@@ -115,8 +123,8 @@ The file must be in Markdown format (.MD), with a maximum size of 100 KB. For se
 
 ## Submitting Library to DAX Lib
 
-Create a pull request from your fork (`<youraccount>/daxlib`) to `daxlib/daxlib` to publish the library on [daxlib.org](https://daxlib.org/). The pull request must be approved manually by DAX Lib owners/maintainers. After approval your library will appear on [DAX Lib](https://daxlib.org/) for other to download and use
+Create a pull request from your fork (`<youraccount>/daxlib`) to `daxlib/daxlib` to publish the library on [daxlib.org](https://daxlib.org/). The pull request must be approved manually by DAX Lib owners/maintainers. After approval, your library is available on [DAX Lib](https://daxlib.org/) for other users to download and use.
 
 > **Packages are immutable**
 >
-> After a pull request has been accepted, Packages are immutable. If you want to submit any changes to functions or files, a new version (i.e. v0.1.0 à v0.2.0 ) must be created, and function annotations and `manifest.daxlib` must be updated with the new version number. Changes can then be submitted with a new pull request.
+> After DAX Lib accepts a pull request, the package is immutable. To change functions or files, create a new version (for example, from 1.0.0 to 1.1.0). Update the version number in `manifest.daxlib` and in the `DAXLIB_PackageVersion` annotation of each function. Then submit the changes in a new pull request.

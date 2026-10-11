@@ -4,7 +4,7 @@ title:          Contribute to DAX Lib
 menu_title:     Contribute
 published:      true
 date:           2025-08-14
-modified:       2026-01-01
+modified:       2026-10-11
 order:          /02
 next_reading:   true
 ---
@@ -71,7 +71,7 @@ sequenceDiagram
 
 ### Medium/Large Library
 
-The process for Medium/Large libraries uses a extended workflow.
+The process for Medium/Large libraries uses an extended workflow.
 
 We still need a fork of `daxlib/daxlib` (`<youraccount>/daxlib`), and will still submit a pull request to `daxlib/daxlib` to publish a library.
 
@@ -98,7 +98,7 @@ sequenceDiagram
 
 #### Medium/Large Library Structure
 
-`daxlib/lib-quickstart-template` has the following structure. The the structure is slightly different from the Small library, but the required content remain the same, except your library now lives in the `src` folder.
+`daxlib/lib-quickstart-template` has the following structure. The structure is slightly different from the Small library, but the required content is the same, except your library now lives in the `src` folder.
 
 ```bash
 .
