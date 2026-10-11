@@ -13,6 +13,10 @@ The DAX Lib MCP server connects an AI assistant to DAX Lib. MCP (Model Context P
 
 > The DAX Lib MCP server is a prerelease (beta) version. Its behavior can change in future versions.
 
+## Supported clients
+
+We tested the server with these MCP clients: Claude (Claude Desktop and Claude Code), GitHub Copilot in VS Code, and Codex. This list can change. We expect the server to work with all MCP clients that support local (stdio) servers. If you find a problem with a client, [open an issue on GitHub](https://github.com/daxlib/daxlib/issues).
+
 ## What the server does
 
 With the DAX Lib MCP server, you can ask your assistant to:
@@ -45,7 +49,7 @@ The server does not change other model objects. The package code does not go thr
 
 ## Limits
 
-- The server runs only on Windows x64.
+- The server runs only on Windows x64. There are no plans for a macOS version at this time. If you want a macOS version, [tell us in a GitHub issue](https://github.com/daxlib/daxlib/issues/new).
 - You can install packages only into models open in Power BI Desktop on the same computer.
 - The server does not remove or update installed functions. To update a package, install the new version. The server replaces functions with the same name.
 

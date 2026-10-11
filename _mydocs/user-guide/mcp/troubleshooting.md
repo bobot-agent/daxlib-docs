@@ -20,7 +20,9 @@ In VS Code:
 3. Select the DAX Lib MCP server.
 4. Select **Show Output**.
 
-In Claude Desktop on Windows, the MCP logs are in `%APPDATA%\Claude\logs`. The file `mcp-server-daxlib-mcp.log` contains the output of the server, if the server name in the configuration is `daxlib-mcp`.
+In the Code tab of the Claude application or in Claude Code, run `/mcp` to see the status of the server. If the server is not in the list, make sure that the entry is at the top level of `%USERPROFILE%\.claude.json`, then restart the application.
+
+In the Chat tab of the Claude application, the MCP logs are in `%APPDATA%\Claude\logs`. The file `mcp-server-daxlib-mcp.log` contains the output of the server, if the server name in the configuration is `daxlib-mcp`.
 
 In Cursor, open the **Output** panel and select **MCP Logs**.
 
@@ -32,6 +34,7 @@ Do the failed action again, then read the most recent messages.
 |---|---|
 | The message says that the platform package `@daxlib/mcp-<platform>-<arch>` is not installed. | The server runs only on Windows x64. On a supported platform, run `npm install @daxlib/mcp-win32-x64`, then try again. |
 | `npx` is not found. | Install Node.js version 18 or higher. Restart the MCP client after the installation. |
+| The message mentions `npx` or `spawn`. | Use `cmd` as the command, with the arguments `/c`, `npx`, `-y`, `@daxlib/mcp`, and `--start`. On Windows, `npx` is a `.cmd` script, and some clients cannot start it without a shell. |
 | The server is not shown in the client. | Make sure that the JSON configuration is correct. Make sure that you use the correct key (`mcpServers` or `servers`) for your client. Restart the client. |
 
 To test the server outside the client, run `npx -y @daxlib/mcp --version` in a terminal.
@@ -51,10 +54,18 @@ To test the server outside the client, run `npx -y @daxlib/mcp --version` in a t
 |---|---|
 | The `dataSource` does not match any local Power BI Desktop instance. | The instance is closed, or the value is not correct. Ask the assistant to list the open instances again, then select one. |
 | The connection to the instance could not be established. | Make sure that Power BI Desktop is open and that the model is loaded. Try again. |
-| The model's compatibility level is lower than 1702. | User-defined functions need compatibility level 1702 or higher. The server does not change the compatibility level. Raise it yourself, then install the package again. |
+| The model's compatibility level is lower than 1702. | User-defined functions need compatibility level 1702 or higher. The DAX Lib MCP server does not change the compatibility level. Raise it yourself, then install the package again. Refer to [Raise the compatibility level](#raise-the-compatibility-level). |
 | The instance hosts a number of databases different from one. | The model is not loaded. Open the target model in Power BI Desktop, then try again. |
 | The package could not be read. | The package content is not valid. Do not try again. Report the problem to the package author. |
 | The engine could not save the change. | Power BI Desktop rejected the change. Read the error message. Do not try again automatically. |
+
+## Raise the compatibility level
+
+You can use the [Power BI Authoring MCP server](https://learn.microsoft.com/en-us/power-bi/developer/mcp/power-bi-authoring-mcp) ([GitHub repository](https://github.com/microsoft/powerbi-modeling-mcp)) to raise the compatibility level. Suggested prompt:
+
+```text
+Connect to the model open in Power BI Desktop and set its compatibility level to 1702.
+```
 
 ## The installed functions are not saved
 
@@ -62,4 +73,4 @@ The server changes the model in Power BI Desktop, but it does not save the file.
 
 ## Report a problem
 
-When you report a problem with the MCP server, include the server version (`npx -y @daxlib/mcp --version`), your MCP client, and the messages from the server output.
+To report a problem with the MCP server, [open an issue on GitHub](https://github.com/daxlib/daxlib/issues/new). Include the server version (`npx -y @daxlib/mcp --version`), your MCP client, and the messages from the server output.

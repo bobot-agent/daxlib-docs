@@ -53,13 +53,32 @@ Most clients use this configuration format, with the `mcpServers` key:
 
 VS Code and Visual Studio use the `servers` key instead of `mcpServers`.
 
-### Claude Desktop
+### Claude (Claude Desktop and Claude Code)
 
-1. In Claude Desktop, open **Settings** > **Developer**, then click **Edit Config**.
-   On Windows, the configuration file is `%APPDATA%\Claude\claude_desktop_config.json`.
-2. Add the `daxlib-mcp` entry to `mcpServers`, as in the example above.
-3. Save the file.
-4. Quit Claude Desktop completely, then start it again.
+The Code tab of the Claude desktop application and the Claude Code command-line client use the same configuration. Add the server to `%USERPROFILE%\.claude.json`. This file applies to all folders, and both clients read it.
+
+1. Close the Claude application.
+2. Open `%USERPROFILE%\.claude.json` in a text editor.
+3. Add the `daxlib-mcp` entry to the `mcpServers` key at the top level of the file. If the file has other keys, keep them. If the file is missing or empty, use this content:
+
+   ```json
+   {
+     "mcpServers": {
+       "daxlib-mcp": {
+         "type": "stdio",
+         "command": "npx",
+         "args": ["-y", "@daxlib/mcp", "--start"]
+       }
+     }
+   }
+   ```
+
+4. Make sure that the JSON is valid. An incorrect file prevents the application from starting.
+5. Start the Claude application again. In the Code tab, run `/mcp` to see the servers and the connection status.
+
+As an alternative, you can add the same entry to the `mcpServers` key of `%APPDATA%\Claude\claude_desktop_config.json`. To open this file, select **Settings** > **Developer** > **Edit Config**. The Chat tab and the Code tab read this file, but the Claude Code command-line client does not read it. Declare the server in one file only.
+
+For more information, refer to [Set up Claude Code Desktop](https://docs.sqlbi.com/ai/tools/claude-code-desktop) on SQLBI Docs.
 
 ### VS Code (GitHub Copilot)
 
