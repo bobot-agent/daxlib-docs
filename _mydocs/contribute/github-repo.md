@@ -23,7 +23,7 @@ This creates a personal copy of the repository in your GitHub account. This repo
 
 ## Add your library
 
-DAX lib expects a `manifest.daxlib` and `lib/functions.tmdl` files. A `README.md` and `icon.png` can be optionally included. These are included in the `src` folder.
+DAX Lib requires the `manifest.daxlib` and `lib/functions.tmdl` files. The `README.md` and `icon.png` files are optional. These are included in the `src` folder.
 
 ```bash
 .

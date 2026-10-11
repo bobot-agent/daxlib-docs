@@ -27,7 +27,7 @@ Create a folder for your package in `/packages/`, following the [naming conventi
     
 ## Create the package
 
-DAX lib expects a `manifest.daxlib` and `lib/functions.tmdl` files. A `README.md` and `icon.png` can be optionally included.
+DAX Lib requires the `manifest.daxlib` and `lib/functions.tmdl` files. The `README.md` and `icon.png` files are optional.
 
 ```bash
 packages/

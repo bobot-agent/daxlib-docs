@@ -52,15 +52,15 @@ While you can manually create HTML files, **Static Site Generators (SSG)** make 
 
 > **GitHub Pages & Jekyll:** GitHub Pages has built-in Jekyll support. When you push to your repository, GitHub automatically runs `jekyll build` and deploys your site. Other SSGs require a [GitHub Actions workflow](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#publishing-with-a-custom-github-actions-workflow) to build the site before deployment.
 
-## Example: daxlib.svg Documentation
+## Example: `DaxLib.SVG` Documentation
 
-The `daxlib.svg` library uses **Material for MkDocs** to generate its documentation site.
+The `DaxLib.SVG` library uses **Material for MkDocs** to generate its documentation site.
 
 <a href="https://evaluationcontext.github.io/daxlib.svg/" class="button" target="_blank">View Documentation Site</a> <a href="https://github.com/EvaluationContext/daxlib.svg" class="button button-alt" target="_blank">View Repository</a>
 
 For a step-by-step guide on building a similar site, see this [blog post](https://evaluationcontext.github.io/posts/DaxLibContribute/#adding-a-docs-site).
 
-![daxlib.svg documentation site](images/doc-site.png)
+![DaxLib.SVG documentation site](images/doc-site.png)
 
 ## Getting Started
 

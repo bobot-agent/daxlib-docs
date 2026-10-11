@@ -11,7 +11,7 @@ next_reading:   true
 
 A DAX library is a collection of DAX user-defined functions (UDFs) written in TMDL format. 
 
-A DAX lib library is comprised of:
+A DAX Lib library contains:
 
 - `manifest.daxlib`: metadata, such as the library name, version, and author
 - `functions.tmdl`: DAX UDF functions
