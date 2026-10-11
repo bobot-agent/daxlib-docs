@@ -9,7 +9,7 @@ order:          /03
 next_reading:   true
 ---
 
-[DaxLib.Client](https://www.nuget.org/packages/DaxLib.Client) is the NuGet package that can be used by external tools to integrate with [DaxLib](https://daxlib.org) directly:
+[DaxLib.Client](https://www.nuget.org/packages/DaxLib.Client) is the NuGet package that can be used by external tools to integrate with [DAX Lib](https://daxlib.org) directly:
 - Create packages
 - Download packages
 
