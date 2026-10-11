@@ -61,10 +61,10 @@ To test the server outside the client, run `npx -y @daxlib/mcp --version` in a t
 
 ## Raise the compatibility level
 
-You can use the [Power BI Authoring MCP server](https://learn.microsoft.com/en-us/power-bi/developer/mcp/power-bi-authoring-mcp) ([GitHub repository](https://github.com/microsoft/powerbi-modeling-mcp)) to raise the compatibility level. Suggested prompt:
+You can use the [Power BI Authoring MCP server](https://learn.microsoft.com/en-us/power-bi/developer/mcp/power-bi-authoring-mcp) ([GitHub repository](https://github.com/microsoft/powerbi-modeling-mcp)) to raise the compatibility level to 1702 or higher. Suggested prompt:
 
 ```text
-Connect to the model open in Power BI Desktop and set its compatibility level to 1702.
+Connect to the model open in Power BI Desktop and make sure that the compatibility level is at least 1702.
 ```
 
 ## The installed functions are not saved
