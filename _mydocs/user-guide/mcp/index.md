@@ -11,8 +11,6 @@ next_reading:   true
 
 The DAX Lib MCP server connects an AI assistant to DAX Lib. MCP (Model Context Protocol) is an open standard that lets an assistant use external tools. Examples of MCP clients are Claude Desktop, GitHub Copilot in VS Code, and Cursor.
 
-> The DAX Lib MCP server is a prerelease (beta) version. Its behavior can change in future versions.
-
 ## Supported clients
 
 We tested the server with these MCP clients: Claude (Claude Desktop and Claude Code), GitHub Copilot in VS Code, and Codex. This list can change. We expect the server to work with all MCP clients that support local (stdio) servers. If you find a problem with a client, [open an issue on GitHub](https://github.com/daxlib/daxlib-mcp/issues).
